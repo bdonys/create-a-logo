@@ -1,6 +1,14 @@
+// Create textColor and shapeColor
+// Export textColor and shapeColor
+
+
+
+
+
+
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const { createLogo } = require('./lib/createLogo');
 
 // Function for three character limit text
 const text = (input) => {
@@ -11,10 +19,6 @@ const text = (input) => {
 };
 
 // Function for color keyword OR hexadecimal code
-
-
-
-// Function for shapes
 
 
 
@@ -30,8 +34,13 @@ function init() {
             },
             {
                 type: 'input',
-                name: 'color',
-                message: 'Please enter a color keyword or hexadecimal code: ',
+                name: 'textColor',
+                message: 'Please enter a color keyword or hexadecimal code for the text: ',
+            },
+            {
+                type: 'input',
+                name: 'shapeColor',
+                message: 'Please enter a color keyword or hexadecimal code for the shape: ',
             },
             {
                 type: 'list',
@@ -40,6 +49,14 @@ function init() {
                 choices: ['circle', 'square', 'triangle'],
             }
         ])
+        .then((answers) => {
+            const svgContent = createLogo(answers);
+            fs.writeFileSync('logo.svg', svgContent);
+            console.log('Generated logo.svg');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
 
 // Function call to initialize app
