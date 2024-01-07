@@ -26,6 +26,7 @@ function init() {
                 type: 'input',
                 name: 'text',
                 message: 'Please enter up to three characters for your text: ',
+                validate: text,
             },
             {
                 type: 'input',
