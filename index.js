@@ -3,14 +3,19 @@ const fs = require('fs');
 
 
 // Function for three character limit text
-
-
+const text = (input) => {
+    if (input.length > 3) {
+        return 'Please enter up to three characters for your text: ';
+    }
+    return true;
+};
 
 // Function for color keyword OR hexadecimal code
 
 
 
 // Function for shapes
+
 
 
 // Function to initialize app
@@ -35,3 +40,6 @@ function init() {
             }
         ])
 }
+
+// Function call to initialize app
+init();
